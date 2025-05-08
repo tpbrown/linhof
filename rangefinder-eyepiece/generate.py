@@ -11,15 +11,17 @@ Dependencies:
 from build123d import *
 from bd_warehouse.thread import IsoThread
 
-lens_mount_diameter = 18.0 * MM  # M18 thread major diameter
+lens_mount_diameter = 19.0 * MM  # M19 thread major diameter
+lens_pitch = 0.5 * MM # Nikon F
 camera_screw_diameter = 16.0 * MM  # M16 thread major diameter
 pitch = 0.75 * MM  # Thread pitch (same for both sides)
+
 
 thread_turns = 4  # Minimal thread engagement
 wall_thickness = 1 * MM
 
 lens_mount_depth = 5 * MM
-lens_mount_thread_depth = pitch + thread_turns
+lens_mount_thread_depth = lens_pitch + thread_turns
 camera_screw_length = pitch * thread_turns + 2 * MM
 
 camera_screw_radius = camera_screw_diameter / 2
@@ -84,7 +86,7 @@ def main():
 
     lens = IsoThread(
         major_diameter=lens_mount_diameter,
-        pitch=pitch,
+        pitch=lens_pitch,
         length=lens_mount_thread_depth,
         external=False,
         # end_finishes=("chamfer", "chamfer"),
